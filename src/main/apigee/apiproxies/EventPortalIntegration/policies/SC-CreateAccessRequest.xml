@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="true" enabled="true" name="SC-CreateAccessRequest">
+  <DisplayName>SC-CreateAccessRequest</DisplayName>
+  <Properties/>
+  <Request clearPayload="true" variable="myRequest">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+      <Headers>
+        <Header name="Authorization">Bearer {eptoken}</Header>
+        <Header name="Content-Type">application/json</Header>
+      </Headers>
+      <Path>/api/v2/apim/appRegistrations/{jsonPath('$.name',request.content)}/accessRequests</Path>
+      <Payload contentType="application/json">
+      {
+      "accessRequestId": "{replaceAll(accessRequestName,regex,with)}",
+      "eventApiProductId":  "{jsonPath('$.attributes[?(@.name=='EP_EventAPIProductId')].value',apiProductResponse.content)}",
+      "planId":  "{jsonPath('$.attributes[?(@.name=='EP_EventAPIProductPlanId')].value',apiProductResponse.content)}"
+      }
+      </Payload>
+      <Verb>POST</Verb>
+    </Set>
+  </Request>
+  <Response>response</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <URL>https://apim-production-api.solace.cloud</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

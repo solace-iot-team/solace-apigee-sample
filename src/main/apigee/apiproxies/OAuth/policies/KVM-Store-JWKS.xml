@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations continueOnError="false" enabled="true" name="KVM-Store-JWKS" mapIdentifier="oauth">
+  <DisplayName>KVM-Store-JWKS</DisplayName>
+  <Properties/>
+  <ExclusiveCache>false</ExclusiveCache>
+  <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+  <Put override="true">
+    <Key>
+      <Parameter>jwks.kty</Parameter>
+    </Key>
+    <Value ref="jwks.kty"/>
+  </Put>
+  <Put override="true">
+    <Key>
+      <Parameter>jwks.e</Parameter>
+    </Key>
+    <Value ref="jwks.e"/>
+  </Put>
+  <Put override="true">
+    <Key>
+      <Parameter>jwks.use</Parameter>
+    </Key>
+    <Value ref="jwks.use"/>
+  </Put>
+  <Put override="true">
+    <Key>
+      <Parameter>jwks.kid</Parameter>
+    </Key>
+    <Value ref="jwks.kid"/>
+  </Put>
+  <Put override="true">
+    <Key>
+      <Parameter>jwks.alg</Parameter>
+    </Key>
+    <Value ref="jwks.alg"/>
+  </Put>
+  <Put override="true">
+    <Key>
+      <Parameter>jwks.n</Parameter>
+    </Key>
+    <Value ref="jwks.n"/>
+  </Put>
+  <Scope>environment</Scope>
+</KeyValueMapOperations>

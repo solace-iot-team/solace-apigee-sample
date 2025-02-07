@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-ExtractRequestContent">
+  <DisplayName>EV-ExtractRequestContent</DisplayName>
+  <Properties/>
+  <JSONPayload>
+    <Variable name="host">
+      <JSONPath>$.host</JSONPath>
+    </Variable>
+    <Variable name="user">
+      <JSONPath>$.user</JSONPath>
+    </Variable>
+    <Variable name="password">
+      <JSONPath>$.password</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <Source clearPayload="false">request.content</Source>
+  <VariablePrefix>devportal</VariablePrefix>
+</ExtractVariables>

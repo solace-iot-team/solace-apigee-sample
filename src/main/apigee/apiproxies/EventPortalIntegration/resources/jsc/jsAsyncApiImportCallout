@@ -1,0 +1,27 @@
+var eapDetails = JSON.parse(context.getVariable('getEventApiProductResponse.content'));
+var clientRequest = JSON.parse(context.getVariable('request.content'));
+var requestScheme = context.getVariable('client.scheme');
+var requestHost = context.getVariable('clientRequest.header.host');
+
+var requestBasepath = requestScheme + "://" + requestHost;
+
+var apis = eapDetails.data.apis;
+var handles=[];
+for (i = 0; i < apis.length; i++) {
+  const api = apis[i];
+  const requestBody = {};
+  requestBody.api=api;
+  requestBody.eventApiProductId=clientRequest.eventApiProductId;
+  requestBody.planId=clientRequest.planId;
+
+  var req = JSON.stringify(requestBody);
+  var url = requestBasepath + "/ep-bootstrap/asyncapi";
+  var operation = "POST";
+  var headers = {};
+  var request = new Request(url, operation, headers, req);
+  var handle = httpClient.send(request);
+  handles.push(handle);
+  
+
+}
+context.setVariable('handles', handles);

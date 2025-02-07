@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="SC-AP-CreateAPIProduct">
+  <DisplayName>SC-AP-CreateAPIProduct</DisplayName>
+  <Properties/>
+  <Request clearPayload="true" variable="createApiProductRequest">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+      <Verb>POST</Verb>
+      <Path>/v1/organizations/{organization.name}/apiproducts</Path>
+      <Payload contentType="application/json">
+      {
+  "name": "{jsonPath('$.apiProductName',request.content)}",
+  "displayName": "{jsonPath('$.apiProductName',request.content)}",
+  "approvalType": "auto",
+  "attributes": [
+    {
+      "name":"EP_EventAPIProductId", "value":"{jsonPath('$.eventApiProductId',request.content)}"
+    },
+    {
+      "name":"EP_EventAPIProductPlanId", "value":"{jsonPath('$.planId',request.content)}"
+    }
+  ],
+  "description": "{jsonPath('$.data.description',getEventApiProductResponse.content)}",
+}
+      </Payload>
+    </Set>
+  </Request>
+  <Response>response</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <Authentication>
+      <GoogleAccessToken>
+        <Scopes>
+          <Scope>https://www.googleapis.com/auth/cloud-platform</Scope>
+        </Scopes>
+      </GoogleAccessToken>
+    </Authentication>
+    <URL>https://apigee.googleapis.com</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

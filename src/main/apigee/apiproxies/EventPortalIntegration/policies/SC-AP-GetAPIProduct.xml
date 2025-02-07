@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="SC-AP-GetAPIProduct">
+  <DisplayName>SC-AP-GetAPIProduct</DisplayName>
+  <Properties/>
+  <Request clearPayload="true" variable="myRequest">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+      <Path>/v1/organizations/{organization.name}/apiproducts/{jsonPath('$.apiproduct',request.content)}</Path>
+      <Verb>GET</Verb>
+    </Set>
+  </Request>
+  <Response>apiProductResponse</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <Authentication>
+      <GoogleAccessToken>
+        <Scopes>
+          <Scope>https://www.googleapis.com/auth/cloud-platform</Scope>
+        </Scopes>
+      </GoogleAccessToken>
+    </Authentication>
+    <URL>https://apigee.googleapis.com</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

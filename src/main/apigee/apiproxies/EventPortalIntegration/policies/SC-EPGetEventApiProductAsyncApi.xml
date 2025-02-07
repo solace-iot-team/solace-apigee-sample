@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="true" enabled="true" name="SC-EPGetEventApiProductAsyncApi">
+  <DisplayName>SC-EPGetEventApiProductAsyncApi</DisplayName>
+  <Properties/>
+  <Request clearPayload="true" variable="getEventApiProductRequest">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+      <Headers>
+        <Header name="Authorization">Bearer {eptoken}</Header>
+        <Header name="Content-Type">application/json</Header>
+      </Headers>
+      <Path>/api/v2/apim/eventApiProducts/{asyncapi.eventApiProductId}/plans/{asyncapi.planId}/eventApis/{asyncapi.eventApiId}</Path>
+      <Verb>GET</Verb>
+    </Set>
+  </Request>
+  <Response>response</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <URL>https://apim-production-api.solace.cloud</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

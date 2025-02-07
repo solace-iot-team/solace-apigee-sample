@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request/>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <Flows>
+    <Flow name="jwt">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>BA-GetUsername</Name>
+        </Step>
+        <Step>
+          <Name>VA-APIKey</Name>
+        </Step>
+        <Step>
+          <Name>KVM-GetPrivateKey</Name>
+        </Step>
+        <Step>
+          <Name>JWT-Generate</Name>
+        </Step>
+        <Step>
+          <Name>AM-JWTResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/jwt") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="keys">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>KVM-SavePrivateKey</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/keys") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="jwks-get">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>KVM-Get-JWKS</Name>
+        </Step>
+        <Step>
+          <Name>AM-JWKSResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/jwks") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="jwks-post">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>EV-JWKSExtract</Name>
+        </Step>
+        <Step>
+          <Name>KVM-Store-JWKS</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/jwks") and (request.verb = "POST")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/oauth</BasePath>
+    <Properties/>
+  </HTTPProxyConnection>
+  <RouteRule name="default"/>
+</ProxyEndpoint>

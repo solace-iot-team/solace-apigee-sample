@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-TokenResponse">
+  <DisplayName>AM-TokenResponse</DisplayName>
+  <Properties/>
+  <Set>
+    <StatusCode>201</StatusCode>
+    <Payload contentType="text/plain">OK</Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

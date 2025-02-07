@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<OAuthV2 continueOnError="false" enabled="true" name="OAuthV2-GenerateJWT">
+  <DisplayName>OAuthV2-GenerateJWT</DisplayName>
+  <Operation>GenerateJWTAccessToken</Operation>
+  <SupportedGrantTypes>
+    <GrantType>client_credentials</GrantType>
+  </SupportedGrantTypes>
+  <GenerateResponse enabled="true"/>
+  <Algorithm>HS256</Algorithm>
+  <SecretKey>
+    <Value ref="private.key"/>
+  </SecretKey>
+  <AdditionalClaims>
+    <Claim type="string" name="app" ref="developer.app.name"/>
+  </AdditionalClaims>
+  <ExpiresIn>3600000</ExpiresIn>
+</OAuthV2>

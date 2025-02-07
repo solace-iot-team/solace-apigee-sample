@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="25" name="Apigee-Platform-Proxy">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1738842037362</CreatedAt>
+  <LastModifiedAt>1738842239241</LastModifiedAt>
+  <BasePaths>/v1/organizations</BasePaths>
+  <Policies>
+    <Policy>JS-NewApp-EP-Callout</Policy>
+    <Policy>SC-EP-CreateAppReg</Policy>
+    <Policy>SC-EP-CreateCredentials</Policy>
+    <Policy>EventPortal</Policy>
+    <Policy>JS-EP-WaitForResponses</Policy>
+    <Policy>AM-SaveProxyRequest</Policy>
+    <Policy>SC-EP-DeleteAppReg</Policy>
+    <Policy>EV-AppName</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <Resources>
+    <Resource>jsc://EP-NewAppCallout.js</Resource>
+    <Resource>jsc://EP-WaitForResponses.js</Resource>
+  </Resources>
+  <TargetEndpoints>
+    <TargetEndpoint>default</TargetEndpoint>
+  </TargetEndpoints>
+</APIProxy>

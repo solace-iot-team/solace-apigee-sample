@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-JWKSExtract">
+  <DisplayName>EV-JWKSExtract</DisplayName>
+  <Properties/>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <JSONPayload>
+    <Variable name="kty">
+      <JSONPath>$.keys[0].kty</JSONPath>
+    </Variable>
+    <Variable name="e">
+      <JSONPath>$.keys[0].e</JSONPath>
+    </Variable>
+    <Variable name="use">
+      <JSONPath>$.keys[0].use</JSONPath>
+    </Variable>
+    <Variable name="kid">
+      <JSONPath>$.keys[0].kid</JSONPath>
+    </Variable>
+    <Variable name="alg">
+      <JSONPath>$.keys[0].alg</JSONPath>
+    </Variable>
+    <Variable name="n">
+      <JSONPath>$.keys[0].n</JSONPath>
+    </Variable>
+  </JSONPayload>
+  <Source clearPayload="false">request</Source>
+  <VariablePrefix>jwks</VariablePrefix>
+</ExtractVariables>

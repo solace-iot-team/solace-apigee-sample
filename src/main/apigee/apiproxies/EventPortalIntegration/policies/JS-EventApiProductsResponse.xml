@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Javascript continueOnError="false" enabled="true" timeLimit="200" name="JS-EventApiProductsResponse">
+  <DisplayName>JS-EventApiProductsResponse</DisplayName>
+  <Properties/>
+  <ResourceURL>jsc://script-EventApiProductsResponse.js</ResourceURL>
+</Javascript>

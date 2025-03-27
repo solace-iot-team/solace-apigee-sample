@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request/>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response/>
+  </PostFlow>
+  <Flows>
+    <Flow name="token">
+      <Description>Provide bearer token in authz header, will be persisted as EP back end token</Description>
+      <Request>
+        <Step>
+          <Name>KVM-EventPortal</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>AM-TokenResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/token") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="newaccessrequest">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>KVM-Get-EP-To</Name>
+        </Step>
+        <Step>
+          <Name>SC-AP-GetAPIProduct</Name>
+        </Step>
+        <Step>
+          <Name>AM-EAPAccessRequest-Id</Name>
+        </Step>
+        <Step>
+          <Name>SC-CreateAccessRequest</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/accessrequests") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="get-eventapiproducts">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>KVM-Get-EP-To</Name>
+        </Step>
+        <Step>
+          <Name>SC-GetEventApiProducts</Name>
+        </Step>
+        <Step>
+          <Name>JS-EventApiProductsResponse</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/eventApiProducts") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="import-eventapiproduct">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-SaveProxyRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>KVM-Get-EP-To</Name>
+        </Step>
+        <Step>
+          <Name>SC-EP-GetEventApiProduct</Name>
+        </Step>
+        <Step>
+          <Name>SC-AP-CreateAPIProduct</Name>
+        </Step>
+        <Step>
+          <Name>JS-AsyncApiImportCallout</Name>
+        </Step>
+        <Step>
+          <Name>JS-WaitForJSCalloutResponses</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/eventApiProducts") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="import-asyncapi">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>KVM-Get-DevPortalConfig</Name>
+        </Step>
+        <Step>
+          <Name>BA-DevPortalAuthzHeader</Name>
+        </Step>
+        <Step>
+          <Name>SC-AP-CreateAsyncApiDoc</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/asyncapi") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="get-eap-plan-api">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>KVM-Get-EP-To</Name>
+        </Step>
+        <Step>
+          <Name>EV-EAP-API-PathVariables</Name>
+        </Step>
+        <Step>
+          <Name>SC-EPGetEventApiProductAsyncApi</Name>
+        </Step>
+        <Step>
+          <Name>AM-SetCorsHeader</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/eventApiProducts/*/plans/*/eventApis/*") and (request.verb = "GET")</Condition>
+    </Flow>
+    <Flow name="devportal-config-post">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>EV-ExtractRequestContent</Name>
+        </Step>
+        <Step>
+          <Name>KVM-SetDevPortal-Config</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/devportal") and (request.verb = "POST")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/ep-bootstrap</BasePath>
+    <Properties/>
+  </HTTPProxyConnection>
+  <RouteRule name="default"/>
+</ProxyEndpoint>

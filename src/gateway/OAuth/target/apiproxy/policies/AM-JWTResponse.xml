@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-JWTResponse">
+  <DisplayName>AM-JWTResponse</DisplayName>
+  <Properties/>
+  <Set>
+    <Payload contentType="application/json">
+    {
+      "access_token": "{token.jwt}",
+      "token_type": "bearer",
+      "expirese_in": "8h"
+    }
+    </Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

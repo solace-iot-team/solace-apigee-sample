@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations continueOnError="false" enabled="true" name="KVM-Get-JWKS" mapIdentifier="oauth">
+  <DisplayName>KVM-Get-JWKS</DisplayName>
+  <Properties/>
+  <ExclusiveCache>false</ExclusiveCache>
+  <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+  <Get assignTo="jwks.kty" index="1">
+    <Key>
+      <Parameter>jwks.kty</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="jwks.e" index="1">
+    <Key>
+      <Parameter>jwks.e</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="jwks.use" index="1">
+    <Key>
+      <Parameter>jwks.use</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="jwks.kid" index="1">
+    <Key>
+      <Parameter>jwks.kid</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="jwks.alg" index="1">
+    <Key>
+      <Parameter>jwks.alg</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="jwks.n" index="1">
+    <Key>
+      <Parameter>jwks.n</Parameter>
+    </Key>
+  </Get>
+  <Scope>environment</Scope>
+</KeyValueMapOperations>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<GenerateJWT continueOnError="false" enabled="true" name="JWT-Generate">
+  <DisplayName>JWT-Generate</DisplayName>
+  <Algorithm>RS256</Algorithm>
+  <PrivateKey>
+    <Id>Na3iKFOsWcrabZ8f5HS-clJXCl1RNG6c687CbB2HqAU</Id>
+    <Value ref="private.key"/>
+  </PrivateKey>
+  <Subject ref="request.header.x-apikey"/>
+  <Issuer ref="request.uri"/>
+  <Audience ref="developer.app.name"/>
+  <ExpiresIn>8h</ExpiresIn>
+  <AdditionalClaims>
+    <Claim type="string" name="app" ref="developer.app.name"/>
+  </AdditionalClaims>
+  <OutputVariable>token.jwt</OutputVariable>
+</GenerateJWT>

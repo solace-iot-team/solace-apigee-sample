@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="false" enabled="true" name="SC-EP-CreateAppReg">
+  <DisplayName>SC-EP-CreateAppReg</DisplayName>
+  <Properties/>
+  <Request clearPayload="true" variable="epRequest">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+      <Headers>
+        <Header name="Authorization">Bearer {eptoken}</Header>
+      </Headers>
+      <Payload contentType="application/json">{
+  "registrationId": "{jsonPath('$..name',response.content)}",
+  "source": "apigee-{organization.name}",
+  "name": "{jsonPath('$..name',response.content)}",
+  "sourceOwner": "{jsonPath('$..developerId',response.content)}",
+  "attributes": [
+  ]
+}</Payload>
+      <Verb>POST</Verb>
+    </Set>
+  </Request>
+  <Response>calloutResponse</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <URL>https://apim-production-api.solace.cloud/api/v2/apim/appRegistrations</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

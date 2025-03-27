@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-JWKSResponse">
+  <DisplayName>AM-JWKSResponse</DisplayName>
+  <Properties/>
+  <Set>
+    <Payload>{"keys":[{
+    "kty": "{jwks.kty}",
+    "e": "{jwks.e}",
+    "use": "{jwks.use}",
+    "kid": "{jwks.kid}",
+    "alg": "{jwks.alg}",
+    "n": "{jwks.n}"
+}]}</Payload>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="response"/>
+</AssignMessage>

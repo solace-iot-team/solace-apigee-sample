@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="48" name="EventPortalIntegration">
+  <DisplayName/>
+  <Description>Management endpoints to set up required back end API credentials</Description>
+  <CreatedAt>1738842200056</CreatedAt>
+  <LastModifiedAt>1738842200056</LastModifiedAt>
+  <BasePaths>/ep-bootstrap</BasePaths>
+  <Policies>
+    <Policy>EventPortal</Policy>
+    <Policy>AM-TokenResponse</Policy>
+    <Policy>KVM-Get-EP-To</Policy>
+    <Policy>SC-AP-GetAPIProduct</Policy>
+    <Policy>SC-CreateAccessRequest</Policy>
+    <Policy>SC-GetEventApiProducts</Policy>
+    <Policy>JS-EventApiProductsResponse</Policy>
+    <Policy>SC-EP-GetEventApiProduct</Policy>
+    <Policy>SC-AP-CreateAPIProduct</Policy>
+    <Policy>AM-EAPAccessRequest-Id</Policy>
+    <Policy>SC-EPGetEventApiProductAsyncApi</Policy>
+    <Policy>SC-AP-CreateAsyncApiDoc</Policy>
+    <Policy>EV-EAP-API-PathVariables</Policy>
+    <Policy>AM-SetCorsHeader</Policy>
+    <Policy>KVM-SetDevPortal-Config</Policy>
+    <Policy>KVM-Get-DevPortalConfig</Policy>
+    <Policy>BA-DevPortalAuthzHeader</Policy>
+    <Policy>EV-ExtractRequestContent</Policy>
+    <Policy>JS-AsyncApiImportCallout</Policy>
+    <Policy>JS-WaitForJSCalloutResponses</Policy>
+    <Policy>AM-SaveProxyRequest</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+  <Resources>
+    <Resource>jsc://script-EventApiProductsResponse.js</Resource>
+    <Resource>jsc://jsAsyncApiImportCallout</Resource>
+    <Resource>jsc://jsWaitForJavascriptCalloutResponses</Resource>
+  </Resources>
+</APIProxy>

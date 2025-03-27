@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations continueOnError="false" enabled="true" name="EventPortal">
+  <DisplayName>KVM-Store-Ep-Token</DisplayName>
+  <Properties/>
+  <ExclusiveCache>false</ExclusiveCache>
+  <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+  <Put override="true">
+    <Key>
+      <Parameter>apitoken</Parameter>
+    </Key>
+    <Value ref="request.content"/>
+  </Put>
+  <Scope>environment</Scope>
+</KeyValueMapOperations>

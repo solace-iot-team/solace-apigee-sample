@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-EAPAccessRequest-Id">
+  <DisplayName>AM-EAPAccessRequest-Id</DisplayName>
+  <Properties/>
+  <AssignVariable>
+    <Name>accessRequestName</Name>
+    <Template>{jsonPath('$.apiproduct',request.content)}</Template>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>regex</Name>
+    <Value>\s</Value>
+  </AssignVariable>
+  <AssignVariable>
+    <Name>with</Name>
+    <Value>-</Value>
+  </AssignVariable>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>

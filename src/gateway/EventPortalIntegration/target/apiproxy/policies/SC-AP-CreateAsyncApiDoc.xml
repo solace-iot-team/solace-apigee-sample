@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout continueOnError="true" enabled="true" name="SC-AP-CreateAsyncApiDoc">
+  <DisplayName>SC-AP-CreateAsyncApiDoc</DisplayName>
+  <Properties/>
+  <Request clearPayload="true" variable="myRequest">
+    <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    <Set>
+      <Headers>
+        <Header name="Authorization">{devportal.authzheader}</Header>
+      </Headers>
+      <Verb>POST</Verb>
+      <Path>/jsonapi/node/asyncapi_doc</Path>
+      <Payload contentType="application/vnd.api+json">
+      {
+    "data": {
+        "type": "node--asyncapi_doc",
+        "attributes": {
+            "status": true,
+            "title": "{jsonPath('$.api.name',request.content)}",
+            "body": {
+                "value": "<p><b>Display Name:</b> {jsonPath('$.api.displayName',request.content)}</p><p>{jsonPath('$.api.description',request.content)}</p><p><b>Version:</b> {jsonPath('$.api.version',request.content)}</p>",
+                "format": "basic_html"
+            },
+            "field_asyncapi_spec_source_type": "url",
+            "field_asyncapi_spec_file_link": {
+                "uri": "{client.scheme}://{request.header.host}/ep-bootstrap/eventApiProducts/{jsonPath('$.eventApiProductId',request.content)}/plans/{jsonPath('$.planId',request.content)}/eventApis/{jsonPath('$.api.id',request.content)}"
+            }
+        }
+    }
+}
+      </Payload>
+    </Set>
+  </Request>
+  <Response>response</Response>
+  <HTTPTargetConnection>
+    <Properties/>
+    <URL>https://dummy.com</URL>
+  </HTTPTargetConnection>
+</ServiceCallout>

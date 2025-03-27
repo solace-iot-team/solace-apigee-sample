@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProxyEndpoint name="default">
+  <Description/>
+  <FaultRules/>
+  <PreFlow name="PreFlow">
+    <Request/>
+    <Response/>
+  </PreFlow>
+  <PostFlow name="PostFlow">
+    <Request/>
+    <Response>
+    </Response>
+  </PostFlow>
+  <Flows>
+    <Flow name="NewApp">
+      <Description/>
+      <Request>
+        <Step>
+          <Name>AM-SaveProxyRequest</Name>
+        </Step>
+      </Request>
+      <Response>
+        <Step>
+          <Name>KVM-EventPortal</Name>
+        </Step>
+        <Step>
+          <Name>SC-EP-CreateAppReg</Name>
+        </Step>
+        <Step>
+          <Name>SC-EP-CreateCredentials</Name>
+        </Step>
+        <Step>
+          <Name>JS-NewApp-EP-Callout</Name>
+        </Step>
+        <Step>
+          <Name>JS-EP-WaitForResponses</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/*/developers/*/apps") and (request.verb = "POST")</Condition>
+    </Flow>
+    <Flow name="DeleteApp">
+      <Description/>
+      <Request/>
+      <Response>
+        <Step>
+          <Name>KVM-EventPortal</Name>
+        </Step>
+        <Step>
+          <Name>EV-AppName</Name>
+        </Step>
+        <Step>
+          <Name>SC-EP-DeleteAppReg</Name>
+        </Step>
+      </Response>
+      <Condition>(proxy.pathsuffix MatchesPath "/*/developers/*/apps/*") and (request.verb = "DELETE")</Condition>
+    </Flow>
+  </Flows>
+  <HTTPProxyConnection>
+    <BasePath>/v1/organizations</BasePath>
+    <Properties/>
+  </HTTPProxyConnection>
+  <RouteRule name="default">
+    <TargetEndpoint>default</TargetEndpoint>
+  </RouteRule>
+</ProxyEndpoint>

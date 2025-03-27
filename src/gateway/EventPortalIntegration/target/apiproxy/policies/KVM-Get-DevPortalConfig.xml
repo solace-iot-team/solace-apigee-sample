@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<KeyValueMapOperations continueOnError="false" enabled="true" name="KVM-Get-DevPortalConfig">
+  <DisplayName>KVM-Get-DevPortalConfig</DisplayName>
+  <Properties/>
+  <ExclusiveCache>false</ExclusiveCache>
+  <ExpiryTimeInSecs>300</ExpiryTimeInSecs>
+  <Get assignTo="servicecallout.SC-AP-CreateAsyncApiDoc.target.url" index="1">
+    <Key>
+      <Parameter>devportal.host</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="devportal.password" index="1">
+    <Key>
+      <Parameter>devportal.password</Parameter>
+    </Key>
+  </Get>
+  <Get assignTo="devportal.user" index="1">
+    <Key>
+      <Parameter>devportal.user</Parameter>
+    </Key>
+  </Get>
+  <Scope>environment</Scope>
+</KeyValueMapOperations>

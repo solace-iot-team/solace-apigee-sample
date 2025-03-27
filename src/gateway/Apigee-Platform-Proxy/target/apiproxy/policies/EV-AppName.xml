@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ExtractVariables continueOnError="false" enabled="true" name="EV-AppName">
+  <DisplayName>EV-AppName</DisplayName>
+  <URIPath name="name">
+    <Pattern>**/developers/*/apps/{name}</Pattern>
+  </URIPath>
+  <Source clearPayload="false">request</Source>
+  <VariablePrefix>app</VariablePrefix>
+</ExtractVariables>

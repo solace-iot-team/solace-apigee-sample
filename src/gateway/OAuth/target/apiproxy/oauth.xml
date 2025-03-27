@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="16" name="oauth">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1737986953102</CreatedAt>
+  <LastModifiedAt>1737986953102</LastModifiedAt>
+  <BasePaths>/oauth</BasePaths>
+  <Policies>
+    <Policy>OAuthV2-GenerateJWT</Policy>
+    <Policy>KVM-SavePrivateKey</Policy>
+    <Policy>KVM-GetPrivateKey</Policy>
+    <Policy>VA-APIKey</Policy>
+    <Policy>BA-GetUsername</Policy>
+    <Policy>JWT-Generate</Policy>
+    <Policy>AM-JWKSResponse</Policy>
+    <Policy>AM-JWTResponse</Policy>
+    <Policy>KVM-Store-JWKS</Policy>
+    <Policy>KVM-Get-JWKS</Policy>
+    <Policy>EV-JWKSExtract</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+</APIProxy>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AssignMessage continueOnError="false" enabled="true" name="AM-SaveProxyRequest">
+  <DisplayName>AM-SaveProxyRequest</DisplayName>
+  <Properties/>
+  <Copy source="request">
+    <FormParams/>
+    <Headers>true</Headers>
+    <Path>true</Path>
+    <Payload>true</Payload>
+    <QueryParams/>
+    <Verb>true</Verb>
+    <Version>true</Version>
+  </Copy>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+  <AssignTo createNew="true" transport="http" type="request">clientRequest</AssignTo>
+</AssignMessage>

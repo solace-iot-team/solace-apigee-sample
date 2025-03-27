@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<APIProxy revision="1" name="hello">
+  <DisplayName/>
+  <Description/>
+  <CreatedAt>1738841783877</CreatedAt>
+  <LastModifiedAt>1738841783877</LastModifiedAt>
+  <BasePaths>/hello</BasePaths>
+  <Policies>
+    <Policy>AM-SetResponse</Policy>
+    <Policy>JWT-Verify</Policy>
+    <Policy>AM-SetJWKSUrl</Policy>
+  </Policies>
+  <ProxyEndpoints>
+    <ProxyEndpoint>default</ProxyEndpoint>
+  </ProxyEndpoints>
+</APIProxy>
